@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: meme-hunter
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: MIN_LIQUIDITY
+        value: "50000"
+      - key: MAX_SIGNALS
+        value: "3"
